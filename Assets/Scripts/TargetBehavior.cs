@@ -20,7 +20,7 @@ public class TargetBehavior : MonoBehaviour
 				return;
 		}
 
-		// only do stuff if hit by a projectile
+		// do stuff if hit by a projectile
 		if (newCollision.gameObject.tag == "Projectile") {
 			if (explosionPrefab) {
 				// Instantiate an explosion effect at the gameObjects position and rotation
@@ -38,5 +38,19 @@ public class TargetBehavior : MonoBehaviour
 			// destroy self
 			Destroy (gameObject);
 		}
-	}
+
+        // do stuff if hit by a rod
+        if (newCollision.gameObject.tag == "Rod")
+        {
+            if (explosionPrefab)
+            {
+                // Instantiate an explosion effect at the gameObjects position and rotation
+                Instantiate(explosionPrefab, transform.position, transform.rotation);
+            }
+
+            // destroy self
+            Destroy(gameObject);
+        }
+
+    }
 }
